@@ -51,7 +51,10 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[#FBF8F1] via-white to-[#FBF8F1]">
+    <section
+      id="services"
+      className="relative overflow-hidden py-24 bg-gradient-to-b from-[#FBF8F1] via-white to-[#FBF8F1]"
+    >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#C9A227]/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#2F6F62]/10 rounded-full blur-3xl" />

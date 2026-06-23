@@ -11,7 +11,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="bg-linear-to-br from-orange-50 via-white to-amber-50 overflow-hidden">
+    <section
+      id="home"
+      className="bg-linear-to-br from-orange-50 via-white to-amber-50 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left content */}
