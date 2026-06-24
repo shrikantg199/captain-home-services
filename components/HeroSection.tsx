@@ -8,6 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -25,7 +26,23 @@ export default function Hero() {
                 Fast, trusted &amp; doorstep repairs
               </span>
             </div>
-
+            {/* CTA buttons */}
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="https://wa.me/919709707478?text=Hi!%20I%20need%20repair%20service%20for%20my%20AC,%20refrigerator,%20washing%20machine,%20geyser,%20or%20another%20appliance.%20Please%20assist%20with%20booking."
+                className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5"
+              >
+                <Calendar size={16} />
+                Book Service
+              </Link>
+              <Link
+                href="tel:9709707478"
+                className="flex items-center gap-2 border-2 border-gray-200 hover:border-orange-400 text-gray-700 hover:text-orange-500 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 bg-white"
+              >
+                <Phone size={16} />
+                Call Now
+              </Link>
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-2 text-gray-900">
               Expert appliance repairs,
               <br />
@@ -57,27 +74,9 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* CTA buttons */}
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="#"
-                className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5"
-              >
-                <Calendar size={16} />
-                Book Service
-              </a>
-              <a
-                href="tel:9707074578"
-                className="flex items-center gap-2 border-2 border-gray-200 hover:border-orange-400 text-gray-700 hover:text-orange-500 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 bg-white"
-              >
-                <Phone size={16} />
-                Call Now
-              </a>
-              <p className="text-sm font-medium text-gray-500">
-                Available 7 days a week
-              </p>
-            </div>
-
+            <p className="text-sm font-medium text-gray-500">
+              Available 7 days a week
+            </p>
             <div className="mt-8 flex flex-col gap-3 text-sm text-gray-600 sm:flex-row sm:flex-wrap">
               {[
                 "No hidden charges",
@@ -109,7 +108,7 @@ export default function Hero() {
               />
 
               {/* Floating Card 2 */}
-              <div className="absolute bottom-10 -right-10 bg-white rounded-2xl shadow-xl p-4 border border-orange-100">
+              {/* <div className="absolute bottom-10 -right-10 bg-white rounded-2xl shadow-xl p-4 border border-orange-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
                     <Star
@@ -122,7 +121,7 @@ export default function Hero() {
                     <p className="font-bold text-gray-900">4.9/5 Rated</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Bottom Badge */}
               <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-6 py-3 rounded-2xl shadow-xl">

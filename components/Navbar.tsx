@@ -11,7 +11,7 @@ export default function Navbar() {
   const navItems = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
-    { id: "pricing", label: "Pricing" },
+
     { id: "about", label: "About Us" },
     { id: "contact", label: "Contact Us" },
   ];
@@ -71,7 +71,7 @@ export default function Navbar() {
                     className="flex items-center gap-2 text-gray-700 font-medium hover:text-orange-500"
                   >
                     <Phone size={16} />
-                    97070 74578
+                    9709707478
                   </a>
 
                   <a
