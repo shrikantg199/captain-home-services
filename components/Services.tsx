@@ -31,7 +31,7 @@ const services = [
     price: "₹249",
     rating: "4.8",
     tag: "TAG-0298",
-    icon: "/assets/menus/geyser.png",
+    icon: "/assets/menus/Geyser.png",
     image: "/assets/Geyser.png",
     description:
       "Get hot water instantly without safety worries. We provide professional repair and maintenance for electric, instant, and storage geysers, focusing on heating element restoration, thermostat calibration, and pressure valve safety checks.",
@@ -78,6 +78,10 @@ const services = [
   },
 ];
 
+// Tiny 1x1 orange placeholder — avoids layout shift while real image loads
+const BLUR_PLACEHOLDER =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9HQAI/wN0D5FqEQAAAABJRU5ErkJggg==";
+
 const gridVariants = {
   hidden: {},
   visible: {
@@ -85,7 +89,10 @@ const gridVariants = {
   },
 };
 
-// ─── Component ────────────────────────────────────────────────────────────────
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<
@@ -95,7 +102,6 @@ export default function Services() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = selectedService ? "hidden" : "";
     return () => {
@@ -103,7 +109,6 @@ export default function Services() {
     };
   }, [selectedService]);
 
-  // Escape key closes modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelectedService(null);
@@ -118,14 +123,14 @@ export default function Services() {
       ref={sectionRef}
       className="relative overflow-hidden py-24 bg-gradient-to-b from-[#FBF8F1] via-white to-[#FBF8F1]"
     >
-      {/* Background Glow — subtle pulse */}
+      {/* Background Glow */}
       <motion.div
-        className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#C9A227]/10 rounded-full blur-3xl"
+        className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#C9A227]/10 rounded-full blur-3xl pointer-events-none"
         animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#2F6F62]/10 rounded-full blur-3xl"
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#2F6F62]/10 rounded-full blur-3xl pointer-events-none"
         animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.9, 0.5] }}
         transition={{
           duration: 10,
@@ -146,17 +151,35 @@ export default function Services() {
             visible: { transition: { staggerChildren: 0.12 } },
           }}
         >
-          <motion.span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#1F2421]/15 bg-white text-[11px] font-mono uppercase tracking-[0.2em] text-[#1F2421]/70 mb-6">
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#1F2421]/15 bg-white text-[11px] font-mono uppercase tracking-[0.2em] text-[#1F2421]/70 mb-6"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A1A]" />
             Interactive Solutions
           </motion.span>
 
-          <motion.h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#1F2421] leading-[1.05]">
+          <motion.h2
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#1F2421] leading-[1.05]"
+          >
             Select An Appliance
             <span className="block text-[#FF7A1A]">For Immediate Repair</span>
           </motion.h2>
 
-          <motion.p className="mt-5 text-sm text-gray-600 leading-relaxed max-w-xl mx-auto">
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="mt-5 text-sm text-gray-600 leading-relaxed max-w-xl mx-auto"
+          >
             Click any of our 4 major appliance repair icons below to view
             instant pricing, direct benefits, and book your service.
           </motion.p>
@@ -169,9 +192,10 @@ export default function Services() {
           animate={isInView ? "visible" : "hidden"}
           variants={gridVariants}
         >
-          {services.map((service) => (
+          {services.map((service, index) => (
             <motion.button
               key={service.id}
+              variants={cardVariants}
               whileHover={{
                 y: -8,
                 transition: { type: "spring", stiffness: 400, damping: 20 },
@@ -188,7 +212,7 @@ export default function Services() {
               {/* Hover Glow */}
               <div className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-10 bg-gradient-to-br from-orange-500 via-orange-400 to-orange-300 transition-opacity duration-500" />
 
-              {/* Icon — scale on hover */}
+              {/* Icon */}
               <motion.div
                 className="flex items-center justify-center mb-5 overflow-hidden"
                 whileHover={{ scale: 1.1, rotate: [0, -4, 4, 0] }}
@@ -197,8 +221,15 @@ export default function Services() {
                 <Image
                   src={service.icon}
                   alt={`${service.name} icon`}
-                  width={100}
-                  height={100}
+                  width={112}
+                  height={112}
+                  // FIX 1: priority on first two visible icons (LCP candidates)
+                  priority={index < 2}
+                  // FIX 2: sizes — prevents Next.js from fetching full-res for a 112px slot
+                  sizes="112px"
+                  // FIX 3: blur placeholder prevents layout shift
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
                   className="object-contain w-28 h-28"
                 />
               </motion.div>
@@ -225,18 +256,20 @@ export default function Services() {
             {/* Backdrop */}
             <motion.div
               className="fixed inset-0 bg-black/60 backdrop-blur-md"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setSelectedService(null)}
             />
 
             {/* Modal Box */}
             <motion.div
               className="relative bg-white w-full max-w-md rounded-[32px] overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.3)] z-10 max-h-[90vh] flex flex-col"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               {/* Close Button */}
               <motion.button
@@ -257,12 +290,18 @@ export default function Services() {
                     fill
                     src={selectedService.image}
                     alt={selectedService.name}
-                    className="object-cover"
+                    // FIX 4: sizes — modal is max-w-md (448px), full width on mobile
+                    sizes="(max-width: 640px) 100vw, 448px"
+                    // FIX 5: priority — this is always the first thing user sees in modal
                     priority
+                    // FIX 6: blur placeholder while full image loads
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent" />
 
-                  {/* Verified Badge — slide in from left */}
+                  {/* Verified Badge */}
                   <motion.div
                     className="absolute top-5 left-5 bg-[#5FA897]/95 text-white backdrop-blur-sm border border-[#5FA897]/50 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider shadow-md"
                     initial={{ opacity: 0, x: -20 }}
@@ -273,7 +312,7 @@ export default function Services() {
                     Verified Technician
                   </motion.div>
 
-                  {/* Name + Rating — slide in from bottom */}
+                  {/* Name + Rating */}
                   <motion.div
                     className="absolute bottom-5 left-6 right-6 flex flex-wrap items-end justify-between gap-4"
                     initial={{ opacity: 0, y: 16 }}
@@ -312,13 +351,21 @@ export default function Services() {
                     <span className="absolute -right-[30px] -top-2 w-4 h-4 rounded-full bg-white border border-gray-100 shadow-inner" />
                   </div>
 
-                  {/* Features + Pricing Grid */}
+                  {/* Features + Pricing */}
                   <div className="grid md:grid-cols-2 gap-6">
-                    {/* Features — staggered list */}
                     <motion.ul
                       className="space-y-2.5"
                       initial="hidden"
                       animate="visible"
+                      variants={{
+                        hidden: {},
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.07,
+                            delayChildren: 0.3,
+                          },
+                        },
+                      }}
                     >
                       <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3.5">
                         Included in Service
@@ -326,6 +373,10 @@ export default function Services() {
                       {selectedService.features.map((feature, i) => (
                         <motion.li
                           key={i}
+                          variants={{
+                            hidden: { opacity: 0, x: -8 },
+                            visible: { opacity: 1, x: 0 },
+                          }}
                           className="flex items-start gap-2 text-sm text-gray-700"
                         >
                           <CheckCircle className="w-4 h-4 text-[#5FA897] mt-0.5 shrink-0" />
@@ -334,10 +385,10 @@ export default function Services() {
                       ))}
                     </motion.ul>
 
-                    {/* Pricing — scale in */}
                     <motion.div
-                      initial="hidden"
-                      animate="visible"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.35, duration: 0.3 }}
                       className="bg-orange-50/50 border border-orange-100/70 p-5 rounded-2xl flex flex-col justify-center gap-2"
                     >
                       <span className="text-[10px] font-mono uppercase tracking-widest text-orange-600/70 block">
@@ -361,8 +412,9 @@ export default function Services() {
 
               {/* Footer CTA */}
               <motion.div
-                initial="hidden"
-                animate="visible"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.3 }}
                 className="p-6 border-t border-gray-100 bg-gray-50/75 flex flex-col sm:flex-row items-center gap-4 justify-between"
               >
                 <div className="hidden sm:block">
