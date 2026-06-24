@@ -89,11 +89,6 @@ const gridVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-};
-
 export default function Services() {
   const [selectedService, setSelectedService] = useState<
     (typeof services)[0] | null
@@ -195,7 +190,6 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.button
               key={service.id}
-              variants={cardVariants}
               whileHover={{
                 y: -8,
                 transition: { type: "spring", stiffness: 400, damping: 20 },
