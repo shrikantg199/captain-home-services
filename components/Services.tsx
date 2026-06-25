@@ -213,9 +213,7 @@ export default function Services() {
             </button>
 
             {/* Drag Handle (mobile only) */}
-            <div className="sm:hidden flex justify-center pt-3 pb-1">
-              <div className="w-10 h-1 rounded-full bg-gray-300" />
-            </div>
+            <div className="sm:hidden flex justify-center  "></div>
 
             {/* Scrollable Content */}
             <div className="overflow-y-auto flex-1">
