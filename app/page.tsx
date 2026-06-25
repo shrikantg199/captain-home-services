@@ -10,7 +10,15 @@ const page = () => {
     <>
       <Navbar />
       <main>
-        <Services />
+        <React.Suspense
+          fallback={
+            <div className="min-h-[40vh] flex items-center justify-center text-sm text-gray-500">
+              Loading services…
+            </div>
+          }
+        >
+          <Services />
+        </React.Suspense>
         <HeroSection />
       </main>
       <WhatsAppWidget />

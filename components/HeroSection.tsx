@@ -1,3 +1,5 @@
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import {
   Phone,
   Calendar,
@@ -20,28 +22,36 @@ export default function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left content */}
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 bg-white/80 border border-orange-200 rounded-full px-4 py-2 mb-2 shadow-sm shadow-orange-100">
+            <Badge className="inline-flex items-center gap-2 bg-white/80 border border-orange-200 text-orange-600 shadow-sm shadow-orange-100 uppercase tracking-wide px-4 py-2 rounded-full font-semibold">
               <Star size={14} className="text-orange-500 fill-orange-500" />
-              <span className="text-orange-600 text-xs font-bold tracking-wide uppercase">
-                Fast, trusted &amp; doorstep repairs
-              </span>
-            </div>
+              Fast, trusted & doorstep repairs
+            </Badge>
             {/* CTA buttons */}
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="https://wa.me/919709707478?text=Hi!%20I%20need%20repair%20service%20for%20my%20AC,%20refrigerator,%20washing%20machine,%20geyser,%20or%20another%20appliance.%20Please%20assist%20with%20booking."
-                className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5"
+            <div className="flex flex-wrap items-center gap-3 mt-2">
+              <Button
+                asChild
+                size="lg"
+                className="shadow-lg shadow-orange-500/30 hover:-translate-y-0.5"
               >
-                <Calendar size={16} />
-                Book Service
-              </Link>
-              <Link
-                href="tel:9709707478"
-                className="flex items-center gap-2 border-2 border-gray-200 hover:border-orange-400 text-gray-700 hover:text-orange-500 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 bg-white"
+                <Link
+                  href="https://wa.me/919709707478?text=Hi!%20I%20need%20repair%20service%20for%20my%20AC,%20refrigerator,%20washing%20machine,%20geyser,%20or%20another%20appliance.%20Please%20assist%20with%20booking."
+                  className="flex items-center gap-2"
+                >
+                  <Calendar size={16} />
+                  Book Service
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-gray-200 text-gray-700 hover:border-orange-400 hover:text-orange-500 bg-white"
               >
-                <Phone size={16} />
-                Call Now
-              </Link>
+                <Link href="tel:9709707478" className="flex items-center gap-2">
+                  <Phone size={16} />
+                  Call Now
+                </Link>
+              </Button>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-2 text-gray-900">
               Expert appliance repairs,
@@ -75,7 +85,7 @@ export default function Hero() {
             </div>
 
             <p className="text-sm font-medium text-gray-500">
-              Available 7 days a week
+              Available 7 days a week • 10am to 7pm
             </p>
             <div className="mt-8 flex flex-col gap-3 text-sm text-gray-600 sm:flex-row sm:flex-wrap">
               {[

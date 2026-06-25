@@ -2,6 +2,39 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+:root {
+  --background: #fff9f2;
+  --foreground: #1f2421;
+  --card: #ffffff;
+  --card-foreground: #1f2421;
+  --popover: #ffffff;
+  --popover-foreground: #1f2421;
+  --primary: #FF7A1A;
+  --primary-foreground: #ffffff;
+  --secondary: #FFF1E6;
+  --secondary-foreground: #1F2421;
+  --accent: #FF7A1A;
+  --accent-foreground: #ffffff;
+  --muted: #fff5ed;
+  --muted-foreground: #6e5840;
+  --destructive: #e44307;
+  --destructive-foreground: #ffffff;
+  --border: #f4c2a0;
+  --input: #f9e5d3;
+  --ring: #FF7A1A;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f2421;
+  --sidebar-primary: #FF7A1A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #FFF1E6;
+  --sidebar-accent-foreground: #1F2421;
+  --sidebar-border: #f4c2a0;
+  --sidebar-ring: #FF7A1A;
+  --polyfill: #f1e2ce;
+  --polyfill-foreground: #1f2421;
+}
+
 
 /* globals.css */
 
