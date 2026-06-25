@@ -10,8 +10,8 @@ const page = () => {
     <>
       <Navbar />
       <main>
-        <HeroSection />
         <Services />
+        <HeroSection />
       </main>
       <WhatsAppWidget />
       <ScrollButton />
