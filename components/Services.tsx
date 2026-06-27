@@ -48,7 +48,7 @@ interface ServiceModalProps {
 
 const TRUST_SIGNALS = [
   { icon: Clock, label: "Same-day\nbooking" },
-  { icon: ShieldCheck, label: "90-day\nwarranty" },
+  { icon: ShieldCheck, label: "30-day\nwarranty" },
   { icon: CreditCard, label: "Pay after\nservice" },
 ];
 
@@ -360,7 +360,7 @@ export default function Services() {
   };
 
   const LOCATION_ADDRESS =
-    "88GJ+JM3, Sri Ram Nagar Colony, Ashok Nagar, Kamareddy, Telangana 503111, India";
+    "Address street no 2 opp Vinayaka skin clinic Ashok nagar kamareddy 503111";
 
   useEffect(() => {
     document.body.style.overflow = selectedService ? "hidden" : "";
@@ -443,6 +443,11 @@ export default function Services() {
               <p className="mt-1.5 text-xs font-bold text-orange-500 font-mono">
                 {service.price}
               </p>
+
+              {/* Warranty Badge */}
+              <Badge className="mt-3 inline-flex items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                30-Day Warranty
+              </Badge>
 
               {/* CTA Pill */}
               <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-orange-500 bg-orange-50 px-3 py-1.5 rounded-full group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">

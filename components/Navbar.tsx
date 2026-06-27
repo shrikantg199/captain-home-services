@@ -7,6 +7,8 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const bookingHref =
+    "https://wa.me/919709707478?text=Hi!%20I%20need%20repair%20service%20for%20my%20AC,%20refrigerator,%20washing%20machine,%20geyser,%20or%20another%20appliance.%20Please%20assist%20with%20booking.";
 
   const navItems = [
     { id: "home", label: "Home" },
@@ -53,31 +55,33 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
                   {navItems.map((item) => (
-                    <a
+                    <Link
                       key={item.id}
                       href={`#${item.id}`}
                       className="text-gray-700 hover:text-orange-500 transition-colors"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
 
                 {/* Desktop CTA */}
                 <div className="hidden md:flex items-center gap-4">
-                  <a
+                  <Link
                     href="tel:9707074578"
                     className="flex items-center gap-2 text-gray-700 font-medium hover:text-orange-500 transition-colors"
                   >
                     <Phone size={16} />
-                    9709707478
-                  </a>
-                  <a
-                    href="#contact"
+                    97070 74578
+                  </Link>
+                  <Link
+                    href={bookingHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-xl font-semibold transition-all shadow-md"
                   >
                     Book Service
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -147,7 +151,7 @@ export default function Navbar() {
           {/* Nav Links */}
           <nav className="flex-1 p-5 space-y-1 overflow-y-auto">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={closeMobile}
@@ -158,31 +162,33 @@ export default function Navbar() {
                   size={18}
                   className="text-orange-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
                 />
-              </a>
+              </Link>
             ))}
             {/* Contact Card */}
             <div className="mt-4 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 p-5 text-white shadow-lg">
               <p className="text-sm opacity-90">Need urgent repair?</p>
-              <a
-                href="tel:9709707478"
+              <Link
+                href="tel:9707074578"
                 className="flex items-center gap-2 mt-2 font-bold text-lg"
               >
                 <Phone size={18} />
-                9709707478
-              </a>
+                97070 74578
+              </Link>
               <p className="text-xs mt-1 opacity-80">
                 Available 24×7 Service Support
               </p>
             </div>
             {/* CTA */}
-            <a
-              href="#contact"
+            <Link
+              href={bookingHref}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeMobile}
               className="block mt-4 bg-gray-900 hover:bg-black text-white py-3.5
               rounded-xl text-center font-semibold shadow-lg transition-all"
             >
-              <a>Book Service Now</a>
-            </a>
+              <span>Book Service Now</span>
+            </Link>
           </nav>
 
           {/* Footer Trust */}
