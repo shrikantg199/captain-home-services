@@ -262,7 +262,7 @@ function ServiceModal({ selectedService, close }: ServiceModalProps) {
                   {selectedService.price}
                 </p>
                 <p className="text-[10px] text-orange-500/80 mt-1">
-                  No hidden charges
+                  Visiting charge: ₹199
                 </p>
               </div>
 

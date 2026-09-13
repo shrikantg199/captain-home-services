@@ -68,11 +68,11 @@ export default function Navbar() {
                 {/* Desktop CTA */}
                 <div className="hidden md:flex items-center gap-4">
                   <Link
-                    href="tel:9707074578"
+                    href="tel:9709707478"
                     className="flex items-center gap-2 text-gray-700 font-medium hover:text-orange-500 transition-colors"
                   >
                     <Phone size={16} />
-                    97070 74578
+                    97097 07478
                   </Link>
                   <Link
                     href={bookingHref}
@@ -168,11 +168,11 @@ export default function Navbar() {
             <div className="mt-4 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 p-5 text-white shadow-lg">
               <p className="text-sm opacity-90">Need urgent repair?</p>
               <Link
-                href="tel:9707074578"
+                href="tel:9709707478"
                 className="flex items-center gap-2 mt-2 font-bold text-lg"
               >
                 <Phone size={18} />
-                97070 74578
+                9709707478
               </Link>
               <p className="text-xs mt-1 opacity-80">
                 Available 24×7 Service Support

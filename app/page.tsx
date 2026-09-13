@@ -46,7 +46,7 @@ const page = () => {
                     Book on WhatsApp
                   </a>
                   <a
-                    href="tel:9707074578"
+                    href="tel:9709707478"
                     className="rounded-2xl border border-orange-200 bg-white px-5 py-3 text-center font-semibold text-orange-600 transition hover:border-orange-400 hover:text-orange-700"
                   >
                     Call Now
